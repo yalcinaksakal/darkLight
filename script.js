@@ -18,7 +18,8 @@ function imageMode(mode) {
       ))
   );
 }
-function toggleDarkLightMode(mode) {
+
+function toggleMode(mode) {
   nav.style.backgroundColor = `rgb(${255 * mode} ${255 * mode} ${
     255 * mode
   } / 50%)`;
@@ -35,7 +36,7 @@ function switchTheme(event) {
     theme[1 - event.target.checked].toLowerCase()
   );
   localStorage.setItem("theme", theme[1 - event.target.checked].toLowerCase());
-  toggleDarkLightMode(1 - event.target.checked); //0 for dark theme, 1 for light theme
+  toggleMode(1 - event.target.checked); //0 for dark theme, 1 for light theme
 }
 
 toggleSwitch.addEventListener("change", switchTheme);
@@ -45,6 +46,6 @@ if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);
   if (currentTheme === "dark") {
     toggleSwitch.checked = true;
-    toggleDarkLightMode(0);
+    toggleMode(0);
   }
 }
